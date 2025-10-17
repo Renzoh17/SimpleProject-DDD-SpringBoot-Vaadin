@@ -34,6 +34,17 @@ public class Order {
         return new Order(OrderId.generateNew(), customerId, initialItems);
     }
 
+    public static Order reconstruct(OrderId id,
+                                    String customerId,
+                                    List<OrderItem> items,
+                                    OrderStatus status,
+                                    Address shippingAddress) {
+        Order order =  new Order(id, customerId, items);
+        order.status = status;
+        order.shippingAddress = shippingAddress;
+        return order;
+    }
+
     public void ship(Address address){
         if(!status.canBeShipped()){
             throw new IllegalStateException("El pedido no puede ser enviado ya que está en estado " + status);

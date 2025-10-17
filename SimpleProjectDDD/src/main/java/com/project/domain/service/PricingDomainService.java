@@ -5,8 +5,26 @@ import com.project.domain.aggregate.Order;
 import java.math.BigDecimal;
 import java.util.Optional;
 
+// Clase que encapsula una lógica compleja que abarca múltiples conceptos de dominio.
+// Se recomienda inyectar interfaces de Repositorio o servicios externos necesarios.
 public class PricingDomainService {
 
+    public PricingDomainService() {}
+
+    // Suponemos que existe un puerto para obtener reglas de negocio,
+    // como IDiscountPolicyRepository
+    // private final IDiscountPolicyRepository policyRepository;
+
+    // public PricingDomainService(IDiscountPolicyRepository policyRepository) {
+    //     this.policyRepository = policyRepository;
+    // }
+
+
+    /**
+     * Aplica la política de descuentos actual al precio total de la orden.
+     * @param order El agregado Order a tarificar.
+     * @return El precio total final después de aplicar descuentos.
+     */
     public BigDecimal calculateFinalPrice(Order order){
         BigDecimal subtotal = order.calculateTotal();
 
